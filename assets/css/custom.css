@@ -4,4 +4,10 @@
     font-weight: 400;
     font-style: italic;
   }
+
+  /* no use its overidden by bootstrap  */
+a {
+  color: aliceblue;
+  text-decoration: none;
+}
   

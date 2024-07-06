@@ -5,7 +5,9 @@ include '../includes/header.php';
 
 <div class="py-3 bg-primary">
     <div class="container">
-        <div class="text-white">Home / Collections</div>
+        <div class="text-white">
+                <a class='text-white text-decoration-none' href="index.php">Home</a> / 
+                Collections</div>
     </div>
 </div>
 <div class="py-5">
@@ -24,7 +26,7 @@ include '../includes/header.php';
                             {
                                 ?>
                                     <div class="col-md-3 mb-2">
-                                        <a href="products.php?category=<?= $item['slug']; ?>">
+                                        <a href="products.php?category=<?= $item['slug']; ?>" class="text-decoration-none">
                                         <div class="card shadow">
                                             <div class="card-body">
                                                 <img src="../uploads/<?= $item['image']; ?>" alt="Category Image" class="w-100">
