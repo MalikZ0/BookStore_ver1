@@ -22,6 +22,9 @@
     <!-- Include SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
 
+    <!-- owl corousel -->
+    <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
 </head>
 
 <body>

@@ -44,6 +44,15 @@
                     $insert_items_query = "INSERT INTO order_items (order_id, prod_id, qty, price) 
                                            VALUES ('$order_id', '$prod_id', '$prod_qty', '$selling_price')";
                     $insert_items_query_run = mysqli_query($con, $insert_items_query);
+
+                    $product_query = "SELECT * FROM products WHERE id='$prod_id' LIMIT 1";
+                    $product_query_run = mysqli_query($con, $product_query);
+
+                    $product_data = mysqli_fetch_array($product_query_run);
+                    $current_prod_qty = $product_data['qty'];
+                    $new_qty = $current_prod_qty - $prod_qty;
+                    $update_qty_query = "UPDATE products SET qty='$new_qty' WHERE id='$prod_id'";
+                    $update_qty_query_run = mysqli_query($con, $update_qty_query);
                 }
 
                 $deleteCart_query = "DELETE FROM carts WHERE user_id='$user_id'";
