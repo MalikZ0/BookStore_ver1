@@ -62,6 +62,11 @@ function redirect($url, $message)
     exit();
 }
 
-
+function redirectD($url, $message)
+{
+    $_SESSION['message'] = $message;
+    header('Location: '.$url);
+    die();
+}
 
 ?>

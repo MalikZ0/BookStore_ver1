@@ -22,8 +22,8 @@
     ?>
         // Display a success notification using SweetAlert2
         Swal.fire({
-            icon: 'success',
-            title: 'Success!',
+            // icon: 'success',
+            // title: 'Success!',
             text: '<?= $_SESSION['message'] ?>', // Echo the session message
             position: 'top', // Customize notification position
             showConfirmButton: false, // Hide the "OK" button

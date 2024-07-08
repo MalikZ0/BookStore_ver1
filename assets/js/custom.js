@@ -34,7 +34,6 @@ $(document).ready(function (){
         }
 
     }); 
-
    
     // add to cart 
     // $('.addToCart_btn').click(function (e){
