@@ -1,12 +1,11 @@
 <?php 
-include '../functions/functions.php';
-include '../includes/header.php';
-include 'authenticateUser.php';
+include '../middleware/adminMiddleware.php';
+include './includes/header.php';
 
 if(isset($_GET['t']))
 {
     $tracking_no = $_GET['t'];
-    $order_data = checkTrackingNo($tracking_no);
+    $order_data = checkTrackingNo2($tracking_no);
 
     if(mysqli_num_rows($order_data) < 0)
     {
@@ -29,28 +28,13 @@ else
 }
 ?>
 
-<div class="py-3 bg-primary">
-    <div class="container">
-        <div class="text-white">
-            <h6>
-                <a class='text-white text-decoration-none' href="index.php">Home</a> /
-                <a class='text-white text-decoration-none' href="checkout.php">My Orders</a> /
-                <a class='text-white text-decoration-none' href="#">view Order</a>
-            </h6>
-        </div>
-    </div>
-</div>
-
-<div class="py-5">
-    <div class="container">
-        <div class="">
-            <div class="row">
-                <div class="col-md-12">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <span class="text-white fs-4">Order</span>
-                            <a href="completeOrder.php" class="btn btn-warning float-start"><i class="fa fa-reply"></i>
-                                Back</a>
+                            <span class="text-white fs-2">Order</span>
+                            <a href="orders.php" class="btn btn-warning float-end"><i class="fa fa-reply"></i> Back</a>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -121,9 +105,9 @@ else
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $user_id = $_SESSION['auth_user']['user_id'];
+
                                                 $order_query = "SELECT o.id as oid, o.tracking_no, o.user_id, oi.*, oi.qty as order_qty, p.* FROM orders o, order_items oi,
-                                                                products p WHERE o.user_id='$user_id' AND oi.order_id=o.id AND p.id=oi.prod_id AND 
+                                                                products p WHERE oi.order_id=o.id AND p.id=oi.prod_id AND 
                                                                 o.tracking_no='$tracking_no' ";
                                                 $order_query_run = mysqli_query($con, $order_query);
 
@@ -135,7 +119,7 @@ else
                                             <tr>
                                                 <td class="align-middle">
                                                     <img src="../uploads/<?= $items['image']?>"
-                                                        alt="<?= $items['name']?>" width="50px" height="50px">
+                                                    alt="<?= $items['name']?>" width="50px" height="50px">
                                                     <?= $items['name']; ?>
                                                 </td>
                                                 <td class="align-middle"><?= $items['selling_prize'];?></td>
@@ -154,30 +138,23 @@ else
                                         </tbody>
                                     </table>
                                     <hr>
-                                    <h5 class="fw-bold">Total Price : <span
-                                            class="float-start fw-bold"><?= $order_data_D['total_price']?></span></h5>
-
-                                        <label for="">Payment Mode</label>
-                                        <div class="border py-1 mb-2 fw-bold">
-                                            <?= $order_data_D['payment_mode']; ?>
-                                        </div>
-                                        <label for="">Status</label>
-                                        <div class="border py-1 mb-2 fw-bold">
-                                            <?php
-                                             if($order_data_D['status'] == 0)
-                                             {
-                                                echo "Pending";
-                                             }
-                                             else if($order_data_D['status'] == 1)
-                                             {
-                                                echo "Completed";
-                                             }
-                                             else if($order_data_D['status'] == 2)
-                                             {
-                                                echo "Cancelled";
-                                             }
-                                            ?>
-                                        </div>
+                                    <h5 class="fw-bold">Total Price : <span class="float-end fw-bold"><?= $order_data_D['total_price']?></span></h5>
+                                    
+                                    <label for="">Payment Mode</label>
+                                    <div class="border p-1 mb-2 fw-bold">
+                                        <?= $order_data_D['payment_mode']; ?>
+                                    </div>
+                                    <label for="">Status</label>
+                                    <div class=" mb-2 fw-bold">
+                                        <form action="code.php" method="POST">
+                                            <input type="hidden" name="tracking_no" value="<?= $order_data_D['tracking_no']?> ">
+                                            <select name="order_status" id="" class="form-select">
+                                                <option value="0" <?= $order_data_D['status'] == 0? 'selected':''?> >Pending</option>
+                                                <option value="1" <?= $order_data_D['status'] == 1? 'selected':''?> >Completed</option>
+                                                <option value="2" <?= $order_data_D['status'] == 2? 'selected':''?> >Cancelled</option>
+                                            </select>
+                                            <button type="submit" name='update_order_btn' class="btn btn-primary mt-2">Update Order Status</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +165,6 @@ else
         </div>
     </div>
 </div>
-
 
 
 <?php include '../includes/footer.php'?>

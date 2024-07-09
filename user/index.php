@@ -41,22 +41,24 @@ include '../includes/slider.php';
     </div>
 </div>
 
-<div class="py-5 bg-f2f2f2">
+<div class="py-3 bg-f2f2f2">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h4>About Us</h4>
                 <div class="underline mb-2">
-                    <p>dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad</p>
-                    <br>
-                    <p>dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad</p>
                 </div>
+                <p>dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad</p>
+                <br>
+                <p>dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad</p>
+                <br>
             </div>
         </div>
     </div>
 </div>
 
-<div class="py-5 bg-dark">
+
+<div class="py-3 bg-dark">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -67,7 +69,6 @@ include '../includes/slider.php';
                     <a href="#" class="text-white"><i class="fa fa-angle-right"></i> My cart</a><br>
                     <a href="index.php" class="text-white"><i class="fa fa-angle-right"></i> Our Collections</a><br>
                 </div>
-
             </div>
             <div class="col-md-3 text-white">
                 <h4>Address</h4>
@@ -82,20 +83,20 @@ include '../includes/slider.php';
                     class="w-100" height="300" style="border:0;" loading="lazy"></iframe>
             </div>
         </div>
-        
+
     </div>
-    
-</div>
 
 </div>
-</div>
-</div>
-<div class="py-2 bg-danger">
-    <div class="text-center">
-        <p class="text-white">All rights reserved. Copyright @  <a href="https://www.facebook.com/malikkumara" class="text-white">Malik</a> <?= date('Y'); ?></p>
+
+
+
+<div class="py-0 bg-danger" style="display: flex;">
+    <div class="text-center m-auto">
+        <p class="text-white">All rights reserved. Copyright @ <a href="https://www.facebook.com/malikkumara"
+                class="text-white">Malik</a> <?= date('Y'); ?></p>
     </div>
 </div>
-</div>
+
 
 <?php include '../includes/footer.php'?>
 <script>

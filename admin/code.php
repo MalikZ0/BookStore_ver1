@@ -230,6 +230,15 @@
             echo 500;
         }
     }
+    else if (isset($_POST['update_order_btn'])){
+        $track_no = $_POST['tracking_no'];
+        $status = $_POST['order_status'];
+
+        $update_query = "UPDATE orders SET status='$status' WHERE tracking_no='$track_no' ";
+        $update_query_run = mysqli_query($con, $update_query);
+        
+        redirect("viewOrderD.php?t=$track_no", "Order Status Updated Successfully");
+    }
     else
     {
         header('Location: ../user/index.php');

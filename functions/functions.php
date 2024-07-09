@@ -16,6 +16,25 @@ function getBy($table, $id)
     return $query_run = mysqli_query($con, $query);
 }
 
+function getAllOrders(){
+    global $con;
+    $query = "SELECT * FROM orders WHERE status='0' ";
+    return $query_run = mysqli_query($con, $query);
+}
+
+function checkTrackingNo2($tracking_no)
+{
+    global $con;
+    $query = "SELECT * FROM orders WHERE tracking_no='$tracking_no' ";
+    return $query_run = mysqli_query($con, $query);
+}
+
+function getAllOrderHistory(){
+    global $con;
+    $query = "SELECT * FROM orders WHERE status!='1' ";
+    return $query_run = mysqli_query($con, $query);
+}
+
 // user side
 function getAllActive($table)
 {
