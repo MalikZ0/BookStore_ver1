@@ -57,7 +57,15 @@
 
                 $deleteCart_query = "DELETE FROM carts WHERE user_id='$user_id'";
                 $deleteCart_query_run = mysqli_query($con, $deleteCart_query);
-                redirectD("../user/completeOrder.php","Order Placed Successfully");
+
+                if($payment_mode == "COD")
+                {
+                    redirectD("../user/completeOrder.php","Order Placed Successfully");
+                }
+                else
+                {
+                    echo 201;
+                }
             }
             
         }
