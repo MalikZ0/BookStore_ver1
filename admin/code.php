@@ -133,9 +133,7 @@
     
         if ($name != "" && $slug != "" && $description != "" && $original_prize != "" && $selling_prize != "" && $qty != "" && $filename != "")
         {
-            $product_query = "INSERT INTO products (category_id,name,slug,small_description,description,original_prize,selling_prize,
-                            qty,meta_title,meta_description,meta_keywords,status,trending,image) VALUES ('$category_id','$name','$slug','$small_description','$description','$original_prize','$selling_prize',
-                            '$qty','$meta_title','$meta_description','$meta_keywords','$status','$trending','$filename')";
+            $product_query = "INSERT INTO products (category_id,name,slug,small_description,description,original_prize,selling_prize,qty,meta_title,meta_description,meta_keywords,status,trending,image) VALUES ('$category_id','$name','$slug','$small_description','$description','$original_prize','$selling_prize','$qty','$meta_title','$meta_description','$meta_keywords','$status','$trending','$filename')";
             $product_query_run = mysqli_query($con, $product_query);
 
             if($product_query_run)

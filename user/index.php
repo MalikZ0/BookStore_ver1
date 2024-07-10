@@ -48,9 +48,7 @@ include '../includes/slider.php';
                 <h4>About Us</h4>
                 <div class="underline mb-2">
                 </div>
-                <p>dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad</p>
-                <br>
-                <p>dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad dd wwew cccz sdad</p>
+                <p>full stack developer</p>
                 <br>
             </div>
         </div>
